@@ -1,0 +1,7 @@
+class LendsViewModel
+{
+    constructor()
+    {
+
+    }
+}
