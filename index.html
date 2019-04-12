@@ -24,8 +24,9 @@
     <script src="Scripts/Models/User.js"></script>
 
     <!--Handlers-->
-    <script src="Scripts/Handlers/TableComponentHandler.js"></script>
+    <script src="Scripts/Handlers/TableHandler.js"></script>
     <script src="Scripts/Handlers/InputDataHandler.js"></script>
+    <script src="Scripts/Handlers/DropDownHandler.js"></script>
     
     <!--Views-->
     <script src="Scripts/Views/MenuViewModel.js"></script>
@@ -83,7 +84,7 @@
                     </tr> 
                 </table>
                 <div>
-                    <button id="BtAddBook" onclick="App.BooksVM.AddNewBook()">Add Client</button>
+                    <button id="BtAddBook" onclick="App.BooksVM.AddNewBook()">Add Book</button>
                     <button id="BtUpdateBook" class="BtInvisible" onclick="App.BooksVM.UpdateBook()">Update Client</button>                    
                     <button id="BtCleanBook" onclick="App.BooksVM.CleanBookForm()">Clean</button>
                 </div>
@@ -94,9 +95,70 @@
             </div>
             <div id="UsersView">
 
+                <div>
+                    <h2>Add new User</h1>
+                </div>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" property="Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Surname:</td>
+                        <td><input type="text" property="Surname"></td>                        
+                    </tr>      
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email" property="Email"></td>                        
+                    </tr>             
+                    <tr>
+                        <td>Birth Date:</td>
+                        <td><input type="date" property="BirthDate"></td>                        
+                    </tr>  
+                </table>
+                <div>
+                    <button id="BtAddUser" onclick="App.UsersVM.AddNewUser()">Add User</button>
+                    <button id="BtUpdateUser" class="BtInvisible" onclick="App.UsersVM.UpdateUser()">Update Client</button>                    
+                    <button id="BtCleanUser" onclick="App.UsersVM.CleanUserForm()">Clean</button>
+                </div>
+
+                <div id="UsersTableContent">
+
+                </div>
             </div>
             <div id="LendsView">
+                <div>
+                    <h2>Handle lends</h1>
+                </div>
+                <table>
+                    <tr>
+                        <td>Select User:</td>
+                        <td>
+                            <div class="dropdown">
+                                <button onclick="App.LendsVM.ShowUsers()" class="dropbtn">Select User</button>
+                                <div id="DDUsers" class="dropdown-content">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Select Book:</td>
+                        <td>
+                            <div class="dropdown">
+                                <button onclick="App.LendsVM.ShowBooks()" class="dropbtn">Select Book</button>
+                                <div id="DDBooks" class="dropdown-content">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    
+                </div>
 
+                <div id="LendsTableContent">
+
+                </div>
             </div>
         </div>
     </div>    

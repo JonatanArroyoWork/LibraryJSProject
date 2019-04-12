@@ -4,9 +4,7 @@ class User
     {
         this.Name = "";
         this.Surname = "";
-        this.Dni = "";    
-        this.Address = "";
         this.Email = "";
-        this.Phone = "";
+        this.BirthDate = "";
     }
 }

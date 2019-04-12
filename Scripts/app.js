@@ -2,12 +2,15 @@ class CrazyBooksApp
 {    
     constructor()
     {
-        this.MenuVM = null;
-        this.BooksVM = null;
+        this.MenuVM = null;       
     }
 
     Start()
     {
+        this.BooksVM = new BooksViewModel();
+        this.UsersVM = new UsersViewModel();
+        this.LendsVM = new LendsViewModel();
+
         this.MenuVM = new MenuViewModel();
         this.MenuVM.ShowView(MenusViews.Books);
     }
@@ -27,3 +30,20 @@ window.onload = function(event)
 {
     App.Start();
 };
+
+window.onclick = function(event) 
+{
+    if (!event.target.matches('.dropbtn')) 
+    {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) 
+      {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) 
+        {
+            openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }

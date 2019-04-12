@@ -19,7 +19,10 @@ class InputDataHandler
                 let property = subnode.getAttribute("property");
 
                 if ( subnode.tagName === "INPUT" && 
-                    (subnode.type === "text" || subnode.type === "number"))
+                    (subnode.type === "text" || 
+                    subnode.type === "number" || 
+                    subnode.type === "email" || 
+                    subnode.type === "date"))
                 {
                     let propValue = subnode.value;
                     let obj = { Property: property, Value: propValue, Node: subnode };

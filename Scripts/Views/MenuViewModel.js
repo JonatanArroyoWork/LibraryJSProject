@@ -13,30 +13,21 @@ class MenuViewModel
                 BooksView.style.display = "block";
                 UsersView.style.display = "none";
                 LendsView.style.display = "none";      
-                
-                if (App.BooksVM == null)
-                {
-                    App.BooksVM = new BooksViewModel();
-                }
-                
+                                
                 break;
 
             case MenusViews.Users:  //2
                 BooksView.style.display = "none";
                 UsersView.style.display = "block";
                 LendsView.style.display = "none";
-                                
-                if (App.UsersVM == null)
-                {
-                    App.UsersVM = new UsersViewModel();
-                }
-                
+
                 break;
 
             case MenusViews.Lends:  //3
                 BooksView.style.display = "none";
                 UsersView.style.display = "none";
                 LendsView.style.display = "block";
+
                 break;
 
         }

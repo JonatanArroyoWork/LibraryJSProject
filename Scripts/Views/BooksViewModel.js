@@ -3,23 +3,59 @@ class BooksViewModel
     constructor()
     {
         this.Books = new Array();
+        
         this.InputHandler = new InputDataHandler();
         this.EditingBook = null;
 
-        this.TableHandler = new TableComponentHandler(
+        this.TableHandler = new TableHandler(
             BooksTableContent,  //parentNode (dónde quiero que se genere la tabla)
             Book,               //modelType (el tipo para las columnas)
-            (book) => { this.OnSelectedBook(book); });  //onSelectedRow
+            (book) => { this.OnSelectedBook(book); }, //onSelectedRow
+            (book) => { this.OnDeletedBook(book); });  //onDeletedRow
+
+            
+        this.CreateDefaultData();
+
+        this.ButtonType = ['Edit', 'Delete'];
     }
 
-    AddNewBook()
+    CreateDefaultData()
+    {
+        var book1 = new Book();
+        book1.Title = "Lord of the rings 1";
+        book1.Author = "J.R.R Tolkien";
+        book1.Year = 1930;
+        book1.Amount = 4;
+
+        var book2 = new Book();
+        book2.Title = "Lord of the rings 2";
+        book2.Author = "J.R.R Tolkien";
+        book2.Year = 1931;
+        book2.Amount = 5;
+
+        var book3 = new Book();
+        book3.Title = "Foundation";
+        book3.Author = "Isaac Asimov";
+        book3.Year = 1955;
+        book3.Amount = 2;
+
+        this.AddBook(book1);
+        this.AddBook(book2);
+        this.AddBook(book3);
+    }
+
+    AddNewBook() // este viene del onclick del html
     {
         let book = new Book();
         this.InputHandler.FillModel(book, BooksView);
-        this.Books.push(book);
-
-        this.TableHandler.AddRow(book);
+        this.AddBook(book);
         this.CleanBookForm();
+    }
+
+    AddBook(book)   //este puede venir de cualquier lado
+    {
+        this.Books.push(book);
+        this.TableHandler.AddRow(book);
     }
 
     UpdateBook()
@@ -47,5 +83,23 @@ class BooksViewModel
 
         BtAddBook.classList.add("BtInvisible");
         BtUpdateBook.classList.remove("BtInvisible");
+    }    
+
+    OnDeletedBook(book)
+    {
+        var response = confirm("¿te atreves a borrar el libro!!??");
+        if (response == true) 
+        {
+            console.log("You pressed OK! jajajaa");
+            let i = this.Books.findIndex((x)=>x === book);
+            this.Books.splice(i, 1);
+
+            // do validations
+            this.TableHandler.DeleteRow(book);
+        } 
+        else 
+        {
+            console.log("You pressed Cancel! cobarde pecador");
+        }        
     }
 }
